@@ -34,23 +34,47 @@
 ## 🗂️ 포함 파일 구성
 - MainWindow.xaml, MainWindow.xaml.cs : 메인 화면 및 로직
 - GetData.cs, GetColor.cs : 데이터 처리 및 색상 매핑 클래스
+- MainViewModel.cs : CSV 파일 읽기 및 clsCircleInfo 리스트 구성
 - Cell.csv : 시각화 대상 원본 데이터
 - README.md : 프로젝트 설명 문서
 - .gitignore : Visual Studio 설정 및 빌드 결과물 제외
+- images/screenshot.png : 결과 화면 스크린
 
 > 📌 .sln(솔루션) 파일은 GitHub에 포함되어 있어 Visual Studio에서 바로 열 수 있습니다.
 
-## 🗂️ 향후 개선 방향
-- 캔버스 크기 자동 조정 또는 스크롤 기능 추가
-- 색상 가시성을 높이기 위한 외곽선(Stroke) 기능 도입
-- 예외 처리 추가 (파일 없음, 데이터 파싱 오류 등)
-- MVVM 구조로의 확장 가능성 검토
+## 🔁 업데이트 내역
 
-## ⚠ 개선 포인트 적용 내역
-- ✅ **예외 처리**: 잘못된 CSV 형식 또는 파싱 실패를 try-catch로 처리
-- ✅ **Canvas 확장**: 좌표 최대값 기준으로 크기 자동 설정
-- ✅ **스크롤 지원**: ScrollViewer 추가
-- ✅ **색상 구분**: 원에 테두리(Stroke) 추가
+- ✅ MVVM 구조 도입 및 ViewModel 분리
+- ✅ ViewModel에서 CSV 로딩 처리
+- ✅ View는 바인딩만 처리하도록 단순화
+- ✅ ItemsControl + Canvas + TranslateTransform 적용
+- ✅ 예외 처리, 색상 가시성, Canvas 동적 사이즈 반영
+
+---
+
+## 🧱 구조 구성 (MVVM 적용)
+
+- **Model**: GetData, GetColor, DotInfo – CSV 데이터와 색상 처리
+- **ViewModel**: MainViewModel – CSV 파일을 읽고 DotInfo 컬렉션 생성
+- **View**: MainWindow.xaml – ItemsControl을 활용한 시각화와 바인딩 구성
+
+---
+
+## ✅ 주요 개선 요약
+
+- CSV 파싱 예외 처리 (`try-catch`)
+- 좌표 기반 Canvas 크기 확장
+- ScrollViewer를 통한 전체 영역 표시
+- 낮은 온도 대비를 위한 Stroke(테두리) 추가
+
+---
+
+## 🗂️ 향후 개선 방향
+
+- 데이터 바인딩 최적화 및 Lazy Load 적용
+- 온도 범위에 따른 색상 범례 UI 추가
+- Unit Test 도입 및 ViewModel 테스트 자동화
+- MVVM 구조 기반의 설정창 또는 인터랙션 확장
 
 ## 🙌 마무리
 작지만 WPF의 핵심 기능들을 다뤄본 좋은 경험이었고,  
